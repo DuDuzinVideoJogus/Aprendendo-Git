@@ -1,120 +1,15 @@
-
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>YouTube — Recriação 2016</title>
-	<style>
-		/* Reset básico */
-		*{box-sizing:border-box;margin:0;padding:0}
-		body{font-family: Arial, Helvetica, sans-serif;background:#f9f9f9;color:#111}
-		/* Topbar */
-		.topbar{height:56px;background:#fff;border-bottom:1px solid #e6e6e6;display:flex;align-items:center;padding:0 16px;position:fixed;left:0;right:0;top:0;z-index:10}
-		.logo{display:flex;align-items:center;gap:12px}
-		.logo .icon{width:90px;height:20px;background:linear-gradient(90deg,#ff0000,#cc0000);border-radius:2px}
-		.search{flex:1;display:flex;justify-content:center}
-		.search form{width:60%;display:flex}
-		.search input{flex:1;padding:8px 12px;border:1px solid #ccc;border-right:0;border-radius:2px 0 0 2px}
-		.search button{padding:8px 12px;border:1px solid #ccc;background:#f8f8f8;border-radius:0 2px 2px 0;cursor:pointer}
-		.icons{display:flex;align-items:center;gap:12px;margin-left:12px}
-		.avatar{width:32px;height:32px;background:#bbb;border-radius:50%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doduzin Sites</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
 
-		/* Layout */
-		.container{display:flex;margin-top:56px}
-		.sidebar{width:240px;background:#fff;border-right:1px solid #e6e6e6;min-height:calc(100vh - 56px);padding:12px}
-		.sidebar nav a{display:block;padding:10px;border-radius:3px;color:#111;text-decoration:none;margin-bottom:4px}
-		.sidebar nav a:hover{background:#f2f2f2}
-
-		.content{flex:1;padding:18px}
-		.section-title{font-size:18px;margin:8px 0 14px}
-
-		/* Grid of videos */
-		.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-		.card{background:#fff;border-radius:2px;overflow:hidden;border:1px solid #e6e6e6}
-		.thumb{background:#ddd;height:180px;display:flex;align-items:flex-end;justify-content:flex-end;padding:8px;color:#fff;font-weight:700}
-		.meta{display:flex;padding:12px;gap:12px}
-		.meta .ch{width:36px;height:36px;background:#bbb;border-radius:50%}
-		.meta .info{flex:1}
-		.meta .info .title{font-size:14px;font-weight:600;margin-bottom:6px}
-		.meta .info .channel{font-size:13px;color:#606060}
-		.meta .info .views{font-size:12px;color:#909090}
-
-		/* Responsive tweaks */
-		@media(max-width:800px){.search form{width:80%}.sidebar{display:none}}
-	</style>
 </head>
 <body>
-	<div class="topbar">
-		<div class="logo">
-			<div class="icon" aria-hidden></div>
-			<strong>YouTube</strong>
-		</div>
-		<div class="search">
-			<form id="searchForm" onsubmit="return false">
-				<input id="q" placeholder="Pesquisar" aria-label="Pesquisar">
-				<button id="searchBtn">Pesquisar</button>
-			</form>
-		</div>
-		<div class="icons">
-			<button title="Criar" aria-label="Criar">◼</button>
-			<div class="avatar" title="Conta"></div>
-		</div>
-	</div>
-
-	<div class="container">
-		<aside class="sidebar">
-			<nav>
-				<a href="#">Início</a>
-				<a href="#">Em alta</a>
-				<a href="#">Inscrições</a>
-				<hr>
-				<a href="#">Biblioteca</a>
-				<a href="#">Histórico</a>
-			</nav>
-		</aside>
-
-		<main class="content">
-			<h2 class="section-title">Recomendados</h2>
-			<div class="grid" id="videos">
-				<!-- cards gerados por JS -->
-			</div>
-		</main>
-	</div>
-
-	<script>
-		// Gera cards de exemplo como no layout do YouTube 2016
-		const videos = Array.from({length:12}).map((_,i)=>({
-			title:`Título do vídeo de exemplo ${i+1}`,
-			channel:`Canal Exemplo ${i+1}`,
-			views:`${(i+1)*123} mil visualizações`
-		}));
-
-		const grid = document.getElementById('videos');
-		videos.forEach(v=>{
-			const card = document.createElement('article');card.className='card';
-			card.innerHTML = `
-				<div class="thumb">${v.views}</div>
-				<div class="meta">
-					<div class="ch"></div>
-					<div class="info">
-						<div class="title">${v.title}</div>
-						<div class="channel">${v.channel}</div>
-						<div class="views">${v.views}</div>
-					</div>
-				</div>`;
-			grid.appendChild(card);
-		});
-
-		// Busca simples (apenas filtra títulos)
-		document.getElementById('searchBtn').addEventListener('click',()=>{
-			const q = document.getElementById('q').value.toLowerCase();
-			const cards = Array.from(document.querySelectorAll('.card'));
-			cards.forEach((c,i)=>{
-				const title = videos[i].title.toLowerCase();
-				c.style.display = title.includes(q) ? '' : 'none';
-			});
-		});
-	</script>
+    
 </body>
 </html>
